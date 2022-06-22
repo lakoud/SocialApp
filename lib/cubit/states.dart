@@ -7,8 +7,9 @@ class SocialGetUserErrorStates extends SocialStates{
   SocialGetUserErrorStates(this.error);
 }
 class SocialChangeBottomNavState extends SocialStates{}
-class SocialChangeModeState extends SocialStates{
+class SocialChangeModeState extends SocialStates{}
 
+class SocialPostState extends SocialStates{
 
 
 }

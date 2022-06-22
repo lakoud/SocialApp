@@ -7,6 +7,7 @@ import 'package:social_app/cubit/states.dart';
 import 'package:social_app/model/user_model.dart';
 import 'package:social_app/modules/chats/chat_scrren.dart';
 import 'package:social_app/modules/feeds/feeds_scrren.dart';
+import 'package:social_app/modules/newPost/new_post.dart';
 import 'package:social_app/modules/users/users_scrren.dart';
 import 'package:social_app/sheared/components/constans.dart';
 
@@ -26,6 +27,9 @@ class SocialCubit extends Cubit<SocialStates>{
     get().
     then((value) {
       model=UserModel.fromJson(value.data());
+      print('haaay cubit');
+            if(model!=null)
+      print(model!.cover);
       emit(SocialGetUserSuccesstStates());
     }).
     catchError((onError){
@@ -40,6 +44,7 @@ class SocialCubit extends Cubit<SocialStates>{
   List<Widget> screens=[
     FeedsScreen(),
    ChatScreen(),
+   NewPostScreen(),
    UsersScreen(),
    SettingsScreen()
 
@@ -47,14 +52,19 @@ class SocialCubit extends Cubit<SocialStates>{
     List<String> titles=[
       'Home'  ,
       'chats',
+      'Post',
       'Users',
       'Settings'
 
   ];
 void changeBottomnav(int index){
-  currentIndex=index;
-  emit(SocialChangeBottomNavState());
+  
+  if (index==2) {
+    emit(SocialPostState());
+  }else{currentIndex=index;
+      emit(SocialChangeBottomNavState());
 
+  }
 }
 bool isdark=false;
 void changeappmode({final darmode })async{

@@ -1,12 +1,10 @@
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_app/cubit/states.dart';
+import 'package:social_app/modules/newPost/new_post.dart';
 import 'package:social_app/sheared/styles/icon_broken.dart';
 
 import '../../cubit/cubit.dart';
-import '../../sheared/components/constans.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -16,7 +14,13 @@ class Home extends StatelessWidget {
     return BlocConsumer<SocialCubit,SocialStates>(
   
        listener:(context, state)async {
-      
+      if(state is SocialPostState){
+      Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const NewPostScreen()),
+  );
+
+      }
 
        },
        builder: (context,state){
@@ -30,6 +34,7 @@ class Home extends StatelessWidget {
             
             
             ),
+            
              IconButton(onPressed: (){}, 
             icon: Icon(IconBroken.Search)
             
@@ -60,6 +65,11 @@ class Home extends StatelessWidget {
           icon: Icon(IconBroken.Chat,
           ),
           label:'chat',
+          ),
+            BottomNavigationBarItem(
+          icon: Icon(IconBroken.Paper_Upload,
+          ),
+          label:'Post',
           ),
         BottomNavigationBarItem(
           icon: Icon(IconBroken.Location),

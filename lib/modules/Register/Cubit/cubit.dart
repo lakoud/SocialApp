@@ -47,7 +47,14 @@ Future userRegister(
     required uId
     
   }) {
-        UserModel model=UserModel(name: name,email:email, phone: phone,uId: uId);
+        UserModel model=UserModel(
+          name: name,email:email, phone: phone,uId: uId,
+          image: "https://img.freepik.com/free-photo/front-view-refined-woman-with-black-curly-hair_197531-16786.jpg?t=st=1655841283~exp=1655841883~hmac=640156e786e30925c2dcfe09001e77ceb401219674bd167f2245ee029356ce79&w=740"
+       ,
+       cover: "https://img.freepik.com/free-photo/front-view-refined-woman-with-black-curly-hair_197531-16786.jpg?t=st=1655841283~exp=1655841883~hmac=640156e786e30925c2dcfe09001e77ceb401219674bd167f2245ee029356ce79&w=740",
+       
+        bio: 'write uour bio'
+          );
 
       return users.doc(uId)
           .set(model.toMap())

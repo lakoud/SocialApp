@@ -8,6 +8,7 @@ import 'package:social_app/cubit/states.dart';
 import 'package:social_app/layout/Home/home.dart';
 import 'package:social_app/modules/Register/register_screen.dart';
 import 'package:social_app/sheared/components/constans.dart';
+import 'package:social_app/sheared/styles/theme.dart';
 
 import 'cubit/cubit.dart';
 import 'modules/login/login_screen.dart';
@@ -52,7 +53,7 @@ class MyApp extends StatelessWidget {
       ],
      
      child: BlocProvider(
-      create: (context)=>SocialCubit()..changeappmode(darmode: mode),
+      create: (context)=>SocialCubit()..changeappmode(darmode: mode)..getuserData(),
       child:BlocConsumer<SocialCubit,SocialStates>(
      listener :(context, state) {
        
@@ -62,81 +63,9 @@ class MyApp extends StatelessWidget {
             
             debugShowCheckedModeBanner: false,
             
-            title: 'Flutter Demo',
-            theme: ThemeData(
-               // ignore: prefer_const_constructors
-               textTheme: TextTheme(
-                // ignore: prefer_const_constructors
-                bodyText1: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color:Colors.black
-                )
-              ), 
-              // ignore: prefer_const_constructors
-                  bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                type: BottomNavigationBarType.fixed,
-                selectedItemColor: Colors.deepOrange,
-                unselectedItemColor: Colors.grey,
-                elevation: 20.0,
-                backgroundColor: Colors.white
-             ),
-              // ignore: prefer_const_constructors
-              appBarTheme:AppBarTheme(
-                iconTheme: IconThemeData(color: Colors.black),
-     
-                backgroundColor: Colors.white,
-                // ignore: prefer_const_constructors
-                systemOverlayStyle: SystemUiOverlayStyle(
-                  statusBarColor: Colors.white,
-                  statusBarIconBrightness: Brightness.dark
-                ),
-                elevation: 0.0,
-                // ignore: prefer_const_constructors
-                titleTextStyle: TextStyle(
-                  fontSize: 20.0,
-                  color:Colors.black,
-                  fontWeight: FontWeight.bold
-                )
-                        )
-            ),
-            darkTheme: ThemeData(
-              // ignore: prefer_const_constructors
-              textTheme: TextTheme(
-                // ignore: prefer_const_constructors
-                bodyText1: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color:Colors.white
-                )
-              ),
-              scaffoldBackgroundColor:HexColor('333739'),
-                    // ignore: prefer_const_constructors
-              bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                type: BottomNavigationBarType.fixed,
-                selectedItemColor: Colors.deepOrange,
-                unselectedItemColor: Colors.grey,
-                elevation: 20.0,
-                backgroundColor: HexColor('333739'),
-              ),
-              // ignore: prefer_const_constructors
-              appBarTheme:AppBarTheme(
-                iconTheme: IconThemeData(color: Colors.white),
-     
-                backgroundColor:HexColor('333739'),
-                // ignore: prefer_const_constructors
-                systemOverlayStyle: SystemUiOverlayStyle(
-                  statusBarColor: HexColor('333739'),
-                  statusBarIconBrightness: Brightness.light,
-                ),
-                elevation: 0.0,
-                // ignore: prefer_const_constructors
-                titleTextStyle: TextStyle(
-                  fontSize: 20.0,
-                  color:Colors.white,
-                  fontWeight: FontWeight.bold
-                )
-            ),),
+            title: 'Social App',
+            theme: lightTheme,
+            darkTheme: darkTheme,
             themeMode: SocialCubit.get(context).isdark?ThemeMode.dark:ThemeMode.light,
             home: startwidget,
             routes:{ 'Login':(context)=>const LoginSocialScreen(),

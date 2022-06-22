@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:social_app/sheared/styles/colors.dart';
 
 Widget defaultButton({
    double? width=double.infinity,
-  Color? background =Colors.blue,
+  Color? background =defaultColor,
   double radius=0.0,
  required   validate,
    required String text,
@@ -11,7 +12,7 @@ Widget defaultButton({
 
 })=> Container(
                   width: width,
-          
+                height: 50,
                   child: MaterialButton(
                     onPressed: ()=>validate(),
                     child: Text(
